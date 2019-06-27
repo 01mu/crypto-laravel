@@ -16,4 +16,12 @@ class CoinsModel extends Model
             ->limit(10)
             ->get();
     }
+
+    public function getCoins($page) {
+        return CoinsModel::select('*')
+            ->orderBy('rank', 'ASC')
+            ->skip($page * 50)
+            ->limit(50)
+            ->get();
+    }
 }

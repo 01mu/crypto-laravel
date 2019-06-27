@@ -16,4 +16,5 @@ Route::get('/', 'HomeController@index');
 Route::group(['middleware' => 'cors'], function ()
 {
     Route::get('/performers/{rank}/{page}', 'CoinsController@getPerformers');
+    Route::get('/coins/{page}', 'CoinsController@getCoins');
 });
