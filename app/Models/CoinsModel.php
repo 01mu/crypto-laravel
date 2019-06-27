@@ -9,7 +9,7 @@ class CoinsModel extends Model
     protected $table = 'coins';
 
     public function getPerformers($changeType, $order, $rankLimit, $page) {
-        return CoinsModel::select($changeType, 'name', 'symbol')
+        return CoinsModel::select($changeType . ' as change', 'name', 'symbol')
             ->where('rank', '<=', $rankLimit)
             ->orderBy($changeType, $order)
             ->skip($page * 50)
