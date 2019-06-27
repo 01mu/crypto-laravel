@@ -12,8 +12,8 @@ class CoinsModel extends Model
         return CoinsModel::select($changeType . ' as change', 'name', 'symbol')
             ->where('rank', '<=', $rankLimit)
             ->orderBy($changeType, $order)
-            ->skip($page * 20)
-            ->limit(20)
+            ->skip($page * 10)
+            ->limit(10)
             ->get();
     }
 }
