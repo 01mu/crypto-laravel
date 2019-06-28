@@ -13,4 +13,9 @@ class KeyValueModel extends Model
             ->where('input_key', '=', $key)
             ->get()[0];
     }
+
+    public function getAllValues() {
+        return KeyValueModel::select('*')
+            ->get();
+    }
 }
