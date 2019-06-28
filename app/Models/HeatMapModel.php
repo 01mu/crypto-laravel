@@ -20,7 +20,7 @@ class HeatMapModel extends Model
         foreach($symbols as $symbol) {
             $symbol = $symbol['symbol'];
 
-            $response[$symbol] = HeatMapModel::select('symbol', 'time',
+            $response[] = HeatMapModel::select('symbol', 'time',
                 'difference')
                 ->where('symbol', '=', $symbol)
                 ->orderBy('time', 'ASC')
