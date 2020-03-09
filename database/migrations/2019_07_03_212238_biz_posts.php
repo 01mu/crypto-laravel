@@ -18,6 +18,7 @@ class BizPosts extends Migration
             $table->longText('comment')->nullable();
             $table->integer('timestamp')->nullable();
             $table->integer('post_id')->nullable();
+            $table->integer('added')->nullable();
         });
     }
 

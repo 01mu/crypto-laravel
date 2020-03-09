@@ -20,6 +20,8 @@ class BizCounts extends Migration
             $table->string('coin_id')->nullable();
             $table->integer('rank')->nullable();
             $table->integer('mention_count')->nullable();
+            $table->integer('count_24h')->nullable();
+            $table->integer('change_24h')->nullable();
         });
     }
 
