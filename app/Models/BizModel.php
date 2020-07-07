@@ -14,7 +14,7 @@ class BizModel extends Model
             'rank', 'name', 'symbol')
             ->join('coins', 'coins.coin_id', '=', 'biz_counts_24h.coin_id')
             ->where('coins.rank', '<=', $rank)
-            ->where('total', '>', 0)
+            ->where('name_count', '>', 0)
             ->orderBy('name_count', 'DESC')
             ->skip($page * 50)
             ->limit(50)
