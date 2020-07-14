@@ -11,7 +11,7 @@ class BizModel extends Model
 
     public function getBiz($rank, $page) {
         return BizModel::select('name_count', 'symbol_count', 'total',
-            'rank', 'name', 'symbol')
+            'rank', 'name', 'symbol', 'name_count_prev')
             ->join('coins', 'coins.coin_id', '=', 'biz_counts_24h.coin_id')
             ->where('coins.rank', '<=', $rank)
             ->where('name_count', '>', 0)
