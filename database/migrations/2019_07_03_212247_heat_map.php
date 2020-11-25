@@ -14,7 +14,6 @@ class HeatMap extends Migration
     public function up()
     {
         Schema::create('heat_map', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->string('symbol')->nullable();
             $table->integer('time')->nullable();
             $table->integer('instance')->nullable();

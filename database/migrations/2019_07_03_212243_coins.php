@@ -14,10 +14,9 @@ class Coins extends Migration
     public function up()
     {
         Schema::create('coins', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->int('coin_id');
             $table->string('name')->nullable();
             $table->string('symbol')->nullable();
-            $table->string('coin_id')->nullable();
             $table->string('slug')->nullable();
             $table->integer('rank')->nullable();
             $table->float('price_btc', null, null)->nullable();

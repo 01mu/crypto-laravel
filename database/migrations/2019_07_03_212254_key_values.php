@@ -14,7 +14,6 @@ class KeyValues extends Migration
     public function up()
     {
         Schema::create('key_values', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->string('input_key')->nullable();
             $table->string('input_value')->nullable();
         });
