@@ -19,7 +19,7 @@ class BizCounts24h extends Migration
             $table->integer('symbol_count')->nullable();
             $table->integer('name_count_prev')->nullable();
             $table->integer('symbol_count_prev')->nullable();
-            $table->integer('total')->nullable()
+            $table->integer('total')->nullable();
         });
     }
 
