@@ -15,9 +15,9 @@ class Coins extends Migration
     {
         Schema::create('coins', function (Blueprint $table) {
             $table->integer('coin_id');
-            $table->string('name')->nullable();
-            $table->string('symbol')->nullable();
-            $table->string('slug')->nullable();
+            $table->text('name')->nullable();
+            $table->text('symbol')->nullable();
+            $table->text('slug')->nullable();
             $table->integer('rank')->nullable();
             $table->float('price_btc', null, null)->nullable();
             $table->float('price_usd', null, null)->nullable();
@@ -32,6 +32,7 @@ class Coins extends Migration
             $table->float('market_cap_percent', null, null)->nullable();
             $table->float('volume_24h', null, null)->nullable();
             $table->float('volume_24h_percent', null, null)->nullable();
+            $table->primary('coin_id');
         });
     }
 

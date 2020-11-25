@@ -17,6 +17,7 @@ class BizCounts extends Migration
             $table->integer('coin_id');
             $table->integer('name_count')->nullable();
             $table->integer('symbol_count')->nullable();
+            $table->primary('coin_id');
         });
     }
 
