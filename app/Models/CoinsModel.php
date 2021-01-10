@@ -24,4 +24,10 @@ class CoinsModel extends Model
             ->limit(50)
             ->get();
     }
+
+    public function getAllCoins() {
+        return CoinsModel::select('*')
+            ->orderBy('rank', 'ASC')
+            ->get();
+    }
 }

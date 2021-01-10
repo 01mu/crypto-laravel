@@ -32,6 +32,14 @@ class CoinsController extends Controller
         echo json_encode($response);
     }
 
+    public function getAllCoins() {
+        $response = [];
+        $cm = new CoinsModel;
+        $response['coins'] = $cm->getAllCoins();
+
+        echo json_encode($response);
+    }
+
     public function getCoins($page) {
         $response = [];
 
