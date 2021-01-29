@@ -17,6 +17,12 @@ class CoinsModel extends Model
             ->get();
     }
 
+    public function getSingle($symbol) {
+        return CoinsModel::select('*')
+            ->where('symbol', '=', $symbol)
+            ->get();
+    }
+
     public function getCoins($page) {
         return CoinsModel::select('*')
             ->orderBy('rank', 'ASC')
@@ -28,6 +34,19 @@ class CoinsModel extends Model
     public function getAllCoins() {
         return CoinsModel::select('*')
             ->orderBy('rank', 'ASC')
+            ->get();
+    }
+
+    public function getPosts($symbol, $page) {
+        return CoinsModel::select('biz_posts.*')
+            ->where('symbol', '=', $symbol)
+            ->join('biz_relations', 'biz_relations.coin_id', '=',
+                'coins.coin_id')
+            ->join('biz_posts', 'biz_posts.post_id', '=',
+                'biz_relations.post_id')
+            ->orderBy('time', 'DESC')
+            ->skip($page * 25)
+            ->limit(25)
             ->get();
     }
 }

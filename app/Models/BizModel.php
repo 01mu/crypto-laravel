@@ -11,11 +11,11 @@ class BizModel extends Model
 
     public function getBiz($rank, $page) {
         return BizModel::select('name_count', 'symbol_count', 'total',
-            'rank', 'name', 'symbol', 'name_count_prev')
+            'rank', 'name', 'symbol', 'name_count_prev', 'total_prev')
             ->join('coins', 'coins.coin_id', '=', 'biz_counts_24h.coin_id')
             ->where('coins.rank', '<=', $rank)
-            ->where('name_count', '>', 0)
-            ->orderBy('name_count', 'DESC')
+            ->where('total', '>', 0)
+            ->orderBy('total', 'DESC')
             ->skip($page * 50)
             ->limit(50)
             ->get();

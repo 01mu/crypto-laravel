@@ -40,6 +40,11 @@ class CoinsController extends Controller
         echo json_encode($response);
     }
 
+    public function getSingle($symbol) {
+        $cm = new CoinsModel;
+        echo json_encode($cm->getSingle($symbol));
+    }
+
     public function getCoins($page) {
         $response = [];
 
@@ -50,5 +55,11 @@ class CoinsController extends Controller
         $response['last_update_coins'] = $kvm->getValue('last_update_coins');
 
         echo json_encode($response);
+    }
+
+    public function getPosts($symbol, $page) {
+       $cm = new CoinsModel;
+
+       echo json_encode($cm->getPosts($symbol, $page));
     }
 }

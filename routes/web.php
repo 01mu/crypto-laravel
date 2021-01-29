@@ -17,6 +17,9 @@ Route::group(['middleware' => 'cors'], function ()
 {
     Route::get('/performers/{rank}/{page}', 'CoinsController@getPerformers');
     Route::get('/coins/{page}', 'CoinsController@getCoins');
+    Route::get('/coin/{symbol}', 'CoinsController@getSingle');
+    Route::get('/ath/{symbol}', 'ATHController@ath');
+    Route::get('/posts/{symbol}/{page}', 'CoinsController@getPosts');
     Route::get('/search', 'CoinsController@getAllCoins');
     Route::get('/heatmap/{page}', 'HeatMapController@getHeatMap');
     Route::get('/info', 'InfoController@getAllValues');
