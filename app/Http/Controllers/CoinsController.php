@@ -58,8 +58,14 @@ class CoinsController extends Controller
     }
 
     public function getPosts($symbol, $page) {
-       $cm = new CoinsModel;
+        $response = [];
 
-       echo json_encode($cm->getPosts($symbol, $page));
+        $cm = new CoinsModel;
+        $kvm = new KeyValueModel;
+
+        $response['posts'] = $cm->getPosts($symbol, $page);
+        $response['last_update'] = $kvm->getValue('last_update_biz_posts');
+
+        echo json_encode($response);
     }
 }
