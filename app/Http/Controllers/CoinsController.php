@@ -68,4 +68,10 @@ class CoinsController extends Controller
 
         echo json_encode($response);
     }
+
+    public function getPostTimeline($symbol) {
+        $cm = new CoinsModel;
+
+        echo json_encode($cm->getPostTimeline($symbol));
+    }
 }

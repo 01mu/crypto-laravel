@@ -37,6 +37,18 @@ class CoinsModel extends Model
             ->get();
     }
 
+    public function getPostTimeline($symbol) {
+        return CoinsModel::select('biz_timeline.time', 'biz_timeline.mentions',
+            'biz_total_posts.*')
+            ->where('symbol', '=', $symbol)
+            ->join('biz_timeline', 'biz_timeline.coin_id', '=',
+                'coins.coin_id')
+            ->join('biz_total_posts', 'biz_total_posts.time', '=',
+                'biz_timeline.time')
+            ->orderBy('biz_timeline.time', 'DESC')
+            ->get();
+    }
+
     public function getPosts($symbol, $page) {
         return CoinsModel::select('biz_posts.*')
             ->where('symbol', '=', $symbol)
