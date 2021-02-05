@@ -49,6 +49,19 @@ class CoinsModel extends Model
             ->get();
     }
 
+    public function getAllPosts($rank, $page) {
+        return CoinsModel::select('biz_posts.*', 'coins.symbol')
+            ->join('biz_relations', 'biz_relations.coin_id', '=',
+                'coins.coin_id')
+            ->join('biz_posts', 'biz_posts.post_id', '=',
+                'biz_relations.post_id')
+            ->where('coins.rank', '<=', $rank)
+            ->orderBy('time', 'DESC')
+            ->skip($page * 25)
+            ->limit(25)
+            ->get();
+    }
+
     public function getPosts($symbol, $page) {
         return CoinsModel::select('biz_posts.*')
             ->where('symbol', '=', $symbol)
