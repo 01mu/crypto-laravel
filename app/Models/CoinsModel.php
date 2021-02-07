@@ -63,7 +63,7 @@ class CoinsModel extends Model
     }
 
     public function getPosts($symbol, $page) {
-        return CoinsModel::select('biz_posts.*')
+        return CoinsModel::select('biz_posts.*', 'coins.symbol')
             ->where('symbol', '=', $symbol)
             ->join('biz_relations', 'biz_relations.coin_id', '=',
                 'coins.coin_id')
