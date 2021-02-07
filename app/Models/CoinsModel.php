@@ -56,9 +56,9 @@ class CoinsModel extends Model
             ->join('biz_posts', 'biz_posts.post_id', '=',
                 'biz_relations.post_id')
             ->where('coins.rank', '<=', $rank)
-            ->orderBy('time', 'DESC')
-            ->skip($page * 100)
-            ->limit(100)
+            ->orderBy('biz_posts.time', 'DESC')
+            ->skip($page * 25)
+            ->limit(25)
             ->get();
     }
 
@@ -70,8 +70,8 @@ class CoinsModel extends Model
             ->join('biz_posts', 'biz_posts.post_id', '=',
                 'biz_relations.post_id')
             ->orderBy('time', 'DESC')
-            ->skip($page * 100)
-            ->limit(100)
+            ->skip($page * 25)
+            ->limit(25)
             ->get();
     }
 }

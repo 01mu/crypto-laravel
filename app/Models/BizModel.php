@@ -20,4 +20,15 @@ class BizModel extends Model
             ->limit(50)
             ->get();
     }
+
+    public function getBizInfo($rank) {
+        return BizModel::select('total',
+            'symbol')
+            ->join('coins', 'coins.coin_id', '=', 'biz_counts_24h.coin_id')
+            ->where('coins.rank', '<=', $rank)
+            ->where('total', '>', 0)
+            ->orderBy('total', 'DESC')
+            ->limit(3)
+            ->get();
+    }
 }
