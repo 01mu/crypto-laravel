@@ -74,4 +74,31 @@ class CoinsModel extends Model
             ->limit(25)
             ->get();
     }
+
+
+    public function redditGetAllPosts($rank, $page) {
+        return CoinsModel::select('reddit_posts.*', 'coins.symbol')
+            ->join('reddit_relations', 'reddit_relations.coin_id', '=',
+                'coins.coin_id')
+            ->join('reddit_posts', 'reddit_posts.post_id', '=',
+                'reddit_relations.post_id')
+            ->where('coins.rank', '<=', $rank)
+            ->orderBy('reddit_posts.time', 'DESC')
+            ->skip($page * 25)
+            ->limit(25)
+            ->get();
+    }
+
+    public function redditGetPosts($symbol, $page) {
+        return CoinsModel::select('reddit_posts.*', 'coins.symbol')
+            ->where('symbol', '=', $symbol)
+            ->join('reddit_relations', 'reddit_relations.coin_id', '=',
+                'coins.coin_id')
+            ->join('reddit_posts', 'reddit_posts.post_id', '=',
+                'reddit_relations.post_id')
+            ->orderBy('time', 'DESC')
+            ->skip($page * 25)
+            ->limit(25)
+            ->get();
+    }
 }

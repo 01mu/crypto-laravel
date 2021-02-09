@@ -86,4 +86,29 @@ class CoinsController extends Controller
 
         echo json_encode($cm->getPostTimeline($symbol));
     }
+
+
+    public function redditGetAllPosts($rank, $page) {
+        $response = [];
+
+        $cm = new CoinsModel;
+        $kvm = new KeyValueModel;
+
+        $response['posts'] = $cm->redditGetAllPosts($rank, $page);
+        $response['last_update'] = $kvm->getValue('last_update_reddit');
+
+        echo json_encode($response);
+    }
+
+    public function redditGetPosts($symbol, $page) {
+        $response = [];
+
+        $cm = new CoinsModel;
+        $kvm = new KeyValueModel;
+
+        $response['posts'] = $cm->redditGetPosts($symbol, $page);
+        $response['last_update'] = $kvm->getValue('last_update_reddit');
+
+        echo json_encode($response);
+    }
 }
