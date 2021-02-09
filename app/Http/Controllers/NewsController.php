@@ -13,4 +13,10 @@ class NewsController extends Controller
 
         echo json_encode($nm->getNews($page));
     }
+
+    public function getHNNews($page) {
+        $nm = new NewsModel;
+
+        echo json_encode($nm->getHNNews($page));
+    }
 }

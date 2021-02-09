@@ -10,6 +10,16 @@ class NewsModel extends Model
 
     public function getNews($page) {
         return NewsModel::select('*')
+            ->where('source', '!=', 'hackernews')
+            ->orderBy('published', 'DESC')
+            ->skip($page * 25)
+            ->limit(25)
+            ->get();
+    }
+
+    public function getHNNews($page) {
+        return NewsModel::select('*')
+            ->where('source', '=', 'hackernews')
             ->orderBy('published', 'DESC')
             ->skip($page * 25)
             ->limit(25)
