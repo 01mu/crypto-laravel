@@ -15,10 +15,9 @@ class RedditController extends Controller
         $bm = new RedditModel;
         $kvm = new KeyValueModel;
 
-        $response['reddit'] = $bm->getReddit($rank, $page);
+        $response['data'] = $bm->getReddit($rank, $page);
 
-        $response['last_update_reddit'] =
-        $kvm->getValue('last_update_reddit');
+        $response['last_update'] = $kvm->getValue('last_update_reddit');
 
         echo json_encode($response);
     }

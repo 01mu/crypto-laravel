@@ -15,10 +15,9 @@ class BizController extends Controller
         $bm = new BizModel;
         $kvm = new KeyValueModel;
 
-        $response['biz'] = $bm->getBiz($rank, $page);
+        $response['data'] = $bm->getBiz($rank, $page);
 
-        $response['last_update_biz'] =
-        $kvm->getValue('last_update_biz');
+        $response['last_update'] = $kvm->getValue('last_update_biz');
 
         echo json_encode($response);
     }
