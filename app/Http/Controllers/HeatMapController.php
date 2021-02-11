@@ -15,6 +15,7 @@ class HeatMapController extends Controller
         $hmm = new HeatMapModel;
         $kvm = new KeyValueModel;
 
+        $response['status'] = 'Success';
         $response['heat_map'] = $hmm->getHeatMap($page);
         $response['last_update_heat_map'] =
             $kvm->getValue('last_update_heat_map');

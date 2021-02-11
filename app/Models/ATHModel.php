@@ -10,6 +10,7 @@ class ATHModel extends Model
 
     public function getATH($symbol) {
         return ATHModel::select('ath', 'time')
+            ->join('coins', 'coins.coin_id', '=', 'ath.coin_id')
             ->where('symbol', '=', $symbol)
             ->orderBy('time', 'DESC')
             ->get();

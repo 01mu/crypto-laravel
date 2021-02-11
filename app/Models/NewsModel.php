@@ -10,7 +10,7 @@ class NewsModel extends Model
 
     public function getNews($page) {
         return NewsModel::select('*')
-            ->where('source', '!=', 'hackernews')
+            ->where('source', '!=', 'Hacker News')
             ->orderBy('published', 'DESC')
             ->skip($page * 25)
             ->limit(25)
@@ -19,7 +19,7 @@ class NewsModel extends Model
 
     public function getHNNews($page) {
         return NewsModel::select('*')
-            ->where('source', '=', 'hackernews')
+            ->where('source', '=', 'Hacker News')
             ->orderBy('published', 'DESC')
             ->skip($page * 25)
             ->limit(25)

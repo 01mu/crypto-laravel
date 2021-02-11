@@ -15,23 +15,16 @@ Route::get('/', 'HomeController@index');
 
 Route::group(['middleware' => 'cors'], function ()
 {
+    Route::get('/ath/{symbol}', 'ATHController@ath');
     Route::get('/performers/{rank}/{page}', 'CoinsController@getPerformers');
     Route::get('/coins/{page}', 'CoinsController@getCoins');
     Route::get('/coin/{symbol}', 'CoinsController@getSingle');
-    Route::get('/ath/{symbol}', 'ATHController@ath');
-    Route::get('/timeline/{symbol}', 'CoinsController@getPostTimeline');
-
-    Route::get('/allposts/biz/{rank}/{page}', 'CoinsController@getAllPosts');
-    Route::get('/posts/biz/{symbol}/{page}', 'CoinsController@getPosts');
-    Route::get('/allposts/reddit/{rank}/{page}', 'CoinsController@redditGetAllPosts');
-    Route::get('/posts/reddit/{symbol}/{page}', 'CoinsController@redditGetPosts');
-
     Route::get('/search', 'CoinsController@getAllCoins');
+    Route::get('/info/{rank}', 'InfoController@getAllValues');
+    Route::get('/news/{source}/{page}', 'NewsController@getNews');
     Route::get('/heatmap/{page}', 'HeatMapController@getHeatMap');
-    Route::get('/info/{bizRank}', 'InfoController@getAllValues');
-    Route::get('/news/hl/{page}', 'NewsController@getNews');
-    Route::get('/news/hn/{page}', 'NewsController@getHNNews');
-
-    Route::get('/biz/{rank}/{page}', 'BizController@getBiz');
-    Route::get('/reddit/{rank}/{page}', 'RedditController@getReddit');
+    Route::get('/posts/all/{source}/{rank}/{page}', 'MentionsController@getAllPosts');
+    Route::get('/posts/symbol/{source}/{symbol}/{page}', 'MentionsController@getSymbolPosts');
+    Route::get('/mentions/{source}/{rank}', 'MentionsController@get24HMentions');
+    Route::get('/timeline/{source}/{symbol}', 'MentionsController@getPostTimeline');
 });

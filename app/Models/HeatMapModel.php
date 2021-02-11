@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class HeatMapModel extends Model
 {
-    protected $table = 'heat_map';
+    protected $table = 'heatmap';
 
     public function getHeatMap($page) {
         $response = [];
@@ -17,12 +17,10 @@ class HeatMapModel extends Model
             ->limit(10)
             ->get();
 
-        foreach($symbols as $symbol) {
-            $symbol = $symbol['symbol'];
-
-            $response[] = HeatMapModel::select('symbol', 'time',
-                'difference')
-                ->where('symbol', '=', $symbol)
+        foreach ($symbols as $symbol) {
+            $response[] = HeatMapModel::select('symbol', 'time', 'difference')
+                ->join('coins', 'heatmap.coin_id', '=', 'coins.coin_id')
+                ->where('symbol', '=', $symbol['symbol'])
                 ->orderBy('time', 'ASC')
                 ->get();
         }
