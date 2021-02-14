@@ -29,6 +29,13 @@ class CoinsModel extends Model
             ->get();
     }
 
+    public function getTopCoins() {
+        return CoinsModel::select('*')
+            ->orderBy('rank', 'ASC')
+            ->limit(10)
+            ->get();
+    }
+
     public function getCoins($page) {
         return CoinsModel::select('*')
             ->orderBy('rank', 'ASC')

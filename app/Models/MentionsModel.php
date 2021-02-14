@@ -9,6 +9,18 @@ class MentionsModel extends Model
 {
     protected $table = 'mention_counts_24h';
 
+    public function getTopMentions($source, $rank) {
+        return MentionsModel::select('name_count', 'symbol_count', 'total',
+            'rank', 'name', 'symbol', 'name_count_prev', 'total_prev')
+            ->join('coins', 'coins.coin_id', '=', 'mention_counts_24h.coin_id')
+            ->where('coins.rank', '<=', $rank)
+            ->where('total', '>', 0)
+            ->where('source', '=', $source)
+            ->orderBy('total', 'DESC')
+            ->limit(10)
+            ->get();
+    }
+
     public function get24HMentions($source, $rank) {
         return MentionsModel::select('name_count', 'symbol_count', 'total',
             'rank', 'name', 'symbol', 'name_count_prev', 'total_prev')
