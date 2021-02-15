@@ -40,17 +40,17 @@ class HomeController extends Controller
         $response = [];
 
         $response['change_1h_asc'] =
-            $cm->getPerformers('change_1h', 'ASC', $rankLimit, $page);
+            $cm->getPerformersMin('change_1h', 'ASC', $rankLimit, $page);
         $response['change_1h_desc'] =
-            $cm->getPerformers('change_1h', 'DESC', $rankLimit, $page);
+            $cm->getPerformersMin('change_1h', 'DESC', $rankLimit, $page);
         $response['change_24h_asc'] =
-            $cm->getPerformers('change_24h', 'ASC', $rankLimit, $page);
+            $cm->getPerformersMin('change_24h', 'ASC', $rankLimit, $page);
         $response['change_24h_desc'] =
-            $cm->getPerformers('change_24h', 'DESC', $rankLimit, $page);
+            $cm->getPerformersMin('change_24h', 'DESC', $rankLimit, $page);
         $response['change_7d_asc'] =
-            $cm->getPerformers('change_7d', 'ASC', $rankLimit, $page);
+            $cm->getPerformersMin('change_7d', 'ASC', $rankLimit, $page);
         $response['change_7d_desc'] =
-            $cm->getPerformers('change_7d', 'DESC', $rankLimit, $page);
+            $cm->getPerformersMin('change_7d', 'DESC', $rankLimit, $page);
 
         return $response;
     }
